@@ -1,6 +1,9 @@
 name: ksoc-guard
 description: Execute a set of policies against the files in a given repository.
 author: KSOC
+branding:
+  icon: alert-triangle
+  color: green
 
 inputs:
   fail_on_severity:
