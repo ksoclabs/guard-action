@@ -48,7 +48,7 @@ inputs:
     description: "Comma separated list of policy tags to execute."
     default: ""
 outputs:
-  policy_results:
+  results:
     description: "The results of the policy execution."
 
 runs:
@@ -67,5 +67,3 @@ runs:
     PATHS: ${{ inputs.paths }}
     POLICY_IDS: ${{ inputs.policy_ids }}
     POLICY_TAGS: ${{ inputs.policy_tags }}
-  args:
-    - "hello world"
