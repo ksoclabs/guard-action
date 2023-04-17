@@ -1,4 +1,4 @@
-name: ksoc-guard
+name: KSOC Guard
 description: Execute a set of policies against the files in a given repository.
 author: KSOC
 branding:
