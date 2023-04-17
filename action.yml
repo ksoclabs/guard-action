@@ -1,0 +1,59 @@
+name: ksoc-guard
+description: Execute a set of policies against the files in a given repository.
+author: KSOC
+
+inputs:
+  fail_on_severity:
+    required: false
+    description: "The severity level at which to fail the workflow. Valid values are: none, low, medium, high, critical."
+    default: high
+  format:
+    required: false
+    description: "The format of the output. Valid values are: ci-table, table."
+    default: ci-table
+  ignored_paths:
+    required: false
+    description: "Comma separated list of paths to ignore."
+    default: ""
+  ignored_policies:
+    required: false
+    description: "Comma separated list of policy IDs to ignore."
+    default: ""
+  ksoc_account_id:
+    description: "The KSOC account ID."
+    required: true
+  ksoc_api_url:
+    required: false
+    description: "The KSOC API URL."
+    default: https://api.ksoc.com
+  paths:
+    required: false
+    description: "Comma separated list of paths to scan."
+    default: "."
+  policy_ids:
+    required: false
+    description: "Comma separated list of policy IDs to execute."
+    default: ""
+  policy_tags:
+    required: false
+    description: "Comma separated list of policy tags to execute."
+    default: ""
+
+runs:
+  using: docker
+  image: us.gcr.io/ksoc-public/policy-executor:v0.0.6
+  env:
+    FAIL_ON_SEVERITY: ${{ inputs.fail_on_severity }}
+    FORMAT: ${{ inputs.format }}
+    IGNORED_PATHS: ${{ inputs.ignored_paths }}
+    IGNORED_POLICIES: ${{ inputs.ignored_policies }}
+    KSOC_ACCESS_KEY_ID: ${{ secrets.KSOC_ACCESS_KEY_ID }}
+    KSOC_ACCOUNT_ID: ${{ inputs.ksoc_account_id }}
+    KSOC_API_URL: ${{ inputs.ksoc_api_url }}
+    KSOC_SECRET_KEY: ${{ secrets.KSOC_SECRET_KEY }}
+    PATHS: ${{ inputs.paths }}
+    POLICY_IDS: ${{ inputs.policy_ids }}
+    POLICY_TAGS: ${{ inputs.policy_tags }}
+  args:
+    - policies
+    - execute
