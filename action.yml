@@ -19,6 +19,9 @@ inputs:
     required: false
     description: "Comma separated list of policy IDs to ignore."
     default: ""
+  ksoc_access_key_id:
+    description: "The KSOC access key ID."
+    required: true
   ksoc_account_id:
     description: "The KSOC account ID."
     required: true
@@ -26,6 +29,9 @@ inputs:
     required: false
     description: "The KSOC API URL."
     default: https://api.ksoc.com
+  ksoc_secret_key:
+    description: "The KSOC secret key."
+    required: true
   paths:
     required: false
     description: "Comma separated list of paths to scan."
@@ -47,10 +53,10 @@ runs:
     FORMAT: ${{ inputs.format }}
     IGNORED_PATHS: ${{ inputs.ignored_paths }}
     IGNORED_POLICIES: ${{ inputs.ignored_policies }}
-    KSOC_ACCESS_KEY_ID: ${{ secrets.KSOC_ACCESS_KEY_ID }}
+    KSOC_ACCESS_KEY_ID: ${{ inputs.ksoc_access_key_id }}
     KSOC_ACCOUNT_ID: ${{ inputs.ksoc_account_id }}
     KSOC_API_URL: ${{ inputs.ksoc_api_url }}
-    KSOC_SECRET_KEY: ${{ secrets.KSOC_SECRET_KEY }}
+    KSOC_SECRET_KEY: ${{ inputs.ksoc_secret_key }}
     PATHS: ${{ inputs.paths }}
     POLICY_IDS: ${{ inputs.policy_ids }}
     POLICY_TAGS: ${{ inputs.policy_tags }}
