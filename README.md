@@ -1,6 +1,8 @@
 # KSOC Guard Action
 
-This action is used to execute a set of policies against the files in a given repository. It is used in the following way:
+KSOC finds misconfigurations in your Kubernetes posture at the level of your GitHub CI.
+
+This action is used to execute a set of KSOC policies against the Kubernetes manifests in a given repository. It is used in the following way:
 
 ```yaml
 name: ksoc-guard
