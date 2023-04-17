@@ -11,17 +11,20 @@ on:
 jobs:
   ksoc-guard:
     permissions:
-      pull-requests: write
-      contents: write
-    uses: ksoclabs/guard-action@main
-    with:
-      ksoc_account_id: <KSOC_ACCOUNT_ID>
-    secrets:
-      KSOC_ACCESS_KEY_ID: ${{ secrets.KSOC_ACCESS_KEY_ID }}
-      KSOC_SECRET_KEY: ${{ secrets.KSOC_SECRET_KEY }}
+      contents: read
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: KSOC Guard
+        uses: ksoclabs/guard-action@main
+        with:
+          ksoc_account_id: <KSOC_ACCOUNT_ID>
+          ksoc_access_key_id: ${{ secrets.KSOC_ACCESS_KEY_ID }}
+          ksoc_secret_key: ${{ secrets.KSOC_SECRET_KEY }}
 ```
 
-The `KSOC_ACCESS_KEY_ID` and `KSOC_SECRET_KEY` are the credentials for the KSOC account that will be used to fetch the policies and should be stored as GitHub secrets. The `ksoc_account_id` is the only required workflow input and must match the KSOC account that the credentials are for.
+The `ksoc_access_key_id` and `ksoc_secret_key` are the credentials for the KSOC account that will be used to fetch the policies and should be stored as GitHub secrets. The `ksoc_account_id` is the only required workflow input and must match the KSOC account that the credentials are for.
 
 There are numerous optional inputs that can be used to configure the action:
 - `fail_on_severity`: The severity level that will cause the action to fail. If not provided, the action will never fail.
