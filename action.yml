@@ -1,5 +1,5 @@
 name: KSOC Guard
-description: Execute a set of policies against the files in a given repository.
+description: KSOC finds misconfigurations in your Kubernetes posture as part of your GitHub Actions CI workflow.
 author: KSOC
 branding:
   icon: alert-triangle
