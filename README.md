@@ -1,6 +1,6 @@
 # KSOC Guard Action
 
-KSOC finds misconfigurations in your Kubernetes posture at the level of your GitHub CI.
+KSOC finds misconfigurations in your Kubernetes posture as part of your GitHub Actions CI workflow.
 
 This action is used to execute a set of KSOC policies against the Kubernetes manifests in a given repository. It is used in the following way:
 

@@ -1,5 +1,5 @@
 name: KSOC Guard
-description: KSOC finds misconfigurations in your Kubernetes posture at the level of your GitHub CI.
+description: KSOC finds misconfigurations in your Kubernetes posture as part of your GitHub Actions CI workflow.
 author: KSOC
 branding:
   icon: alert-triangle
