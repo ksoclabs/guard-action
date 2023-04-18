@@ -19,7 +19,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: KSOC Guard
-        uses: ksoclabs/guard-action@v0.0.5
+        uses: ksoclabs/guard-action@v0.0.6
         with:
           ksoc_account_id: <KSOC_ACCOUNT_ID>
           ksoc_access_key_id: ${{ secrets.KSOC_ACCESS_KEY_ID }}
@@ -55,7 +55,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: KSOC Guard
-        uses: ksoclabs/guard-action@v0.0.5
+        uses: ksoclabs/guard-action@v0.0.6
         with:
           ksoc_account_id: <KSOC_ACCOUNT_ID>
           ksoc_access_key_id: ${{ secrets.KSOC_ACCESS_KEY_ID }}
