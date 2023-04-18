@@ -47,10 +47,13 @@ inputs:
     required: false
     description: "Comma separated list of policy tags to execute."
     default: ""
+outputs:
+  results:
+    description: "The results of the policy execution."
 
 runs:
   using: docker
-  image: docker://us.gcr.io/ksoc-public/policy-executor:v0.0.6
+  image: Dockerfile
   env:
     FAIL_ON_SEVERITY: ${{ inputs.fail_on_severity }}
     FORMAT: ${{ inputs.format }}
@@ -63,6 +66,3 @@ runs:
     PATHS: ${{ inputs.paths }}
     POLICY_IDS: ${{ inputs.policy_ids }}
     POLICY_TAGS: ${{ inputs.policy_tags }}
-  args:
-    - policies
-    - execute
