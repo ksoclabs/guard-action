@@ -54,7 +54,6 @@ outputs:
 runs:
   using: docker
   image: Dockerfile
-#  image: docker://us.gcr.io/ksoc-public/policy-executor:v0.0.6
   env:
     FAIL_ON_SEVERITY: ${{ inputs.fail_on_severity }}
     FORMAT: ${{ inputs.format }}
