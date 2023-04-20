@@ -117,18 +117,18 @@ The following policies are embedded in this action if used with the `policy_dir`
 
 | Policy ID                       | Policy Title                                                   | Severity |
 |---------------------------------|----------------------------------------------------------------|----------|
-| KSOC-K8S-RUN-AS-HIGH-UID        | Container(s) not running with a high UID                       | low      |
-| KSOC-K8S-PRIV-ESC               | Container(s) allow privilege escalation                        | medium   |
-| KSOC-K8S-IMAGE-LATEST           | Container(s) image tag is set to latest                        | low      |
 | KSOC-K8S-CAP-SYSADMIN           | CAP_SYS_ADMIN Linux capability is in use in container(s)       | high     |
-| KSOC-K8S-HOST-PID               | Host PID flag set to true in container(s)                      | low      |
-| KSOC-K8S-HOST-IPC               | hostIPC flag set to true in container(s)                       | low      |
-| KSOC-K8S-HOST-NETWORK           | hostNetwork flag set to true                                   | low      |
-| KSOC-K8S-NET-RAW                | NET_RAW capability detected in container(s)                    | medium   |
 | KSOC-K8S-ROLE-CLUSTERADMIN      | Ensure that the cluster-admin role is only used where required | high     |
+| KSOC-K8S-DEFAULT-SERVICEACCOUNT | Ensure that default service accounts are not actively used.    | medium   |
+| KSOC-K8S-NET-RAW                | NET_RAW capability detected in container(s)                    | medium   |
+| KSOC-K8S-PRIV-ESC               | Container(s) allow privilege escalation                        | medium   |
+| KSOC-K8S-SECURITYCONTEXT        | Container(s) running without defined securityContext           | medium   |
+| KSOC-K8S-SECURITYCONTEXT-POD    | Pod running without defined securityContext                    | medium   |
 | KSOC-K8S-WILDCARD-APIGROUPS     | Minimize wildcard use in Roles and ClusterRoles:ApiGroups      | medium   |
 | KSOC-K8S-WILDCARD-RESOURCES     | Minimize wildcard use in Roles and ClusterRoles:Resources      | medium   |
 | KSOC-K8S-WILDCARD-VERBS         | Minimize wildcard use in Roles and ClusterRoles:Verbs          | medium   |
-| KSOC-K8S-DEFAULT-SERVICEACCOUNT | Ensure that default service accounts are not actively used.    | medium   |
-| KSOC-K8S-SECURITYCONTEXT        | Container(s) running without defined securityContext           | medium   |
-| KSOC-K8S-SECURITYCONTEXT-POD    | Pod running without defined securityContext                    | medium   |
+| KSOC-K8S-HOST-IPC               | hostIPC flag set to true in container(s)                       | low      |
+| KSOC-K8S-HOST-NETWORK           | hostNetwork flag set to true                                   | low      |
+| KSOC-K8S-HOST-PID               | Host PID flag set to true in container(s)                      | low      |
+| KSOC-K8S-IMAGE-LATEST           | Container(s) image tag is set to latest                        | low      |
+| KSOC-K8S-RUN-AS-HIGH-UID        | Container(s) not running with a high UID                       | low      |
