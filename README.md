@@ -5,7 +5,7 @@ KSOC finds misconfigurations in your Kubernetes posture as part of your GitHub A
 This action is used to execute a set of KSOC policies against the Kubernetes manifests in a given repository. There are two sources of policies that can be used:
 
 - Policies fetched from your KSOC account. This requires the `ksoc_account_id`, `ksoc_access_key_id` and `ksoc_secret_key` inputs to be provided.
-- Policies from the `policies` directory embedded in this action. This requires the `policy_dir` input to be provided with `policies` value.
+- Policies from the `/policies` directory embedded in this action. This requires the `policy_dir` input to be provided with `/policies` value.
 
 ## Example Usage With Policies From KSOC Account
 
@@ -24,7 +24,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: KSOC Guard
-        uses: ksoclabs/guard-action@v0.0.7
+        uses: ksoclabs/guard-action@v0.0.8
         with:
           ksoc_account_id: <KSOC_ACCOUNT_ID>
           ksoc_access_key_id: ${{ secrets.KSOC_ACCESS_KEY_ID }}
@@ -48,9 +48,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: KSOC Guard
-        uses: ksoclabs/guard-action@v0.0.7
+        uses: ksoclabs/guard-action@v0.0.8
         with:
-          policy_dir: policies
+          policy_dir: /policies
 ```
 
 ## Optional Inputs
@@ -84,7 +84,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: KSOC Guard
-        uses: ksoclabs/guard-action@v0.0.7
+        uses: ksoclabs/guard-action@v0.0.8
         with:
           ksoc_account_id: <KSOC_ACCOUNT_ID>
           ksoc_access_key_id: ${{ secrets.KSOC_ACCESS_KEY_ID }}
