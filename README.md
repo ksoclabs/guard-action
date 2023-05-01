@@ -1,6 +1,4 @@
 # KSOC Guard Action
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fksoclabs%2Fguard-action.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fksoclabs%2Fguard-action?ref=badge_shield)
-
 
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/ksoclabs/guard-action)
 ![Hex.pm](https://img.shields.io/hexpm/l/apa)
@@ -139,11 +137,6 @@ The following policies are embedded in this action if used with the `policy_dir`
 | KSOC-K8S-HOST-PID               | Host PID flag set to true in container(s)                      | low      |
 | KSOC-K8S-IMAGE-LATEST           | Container(s) image tag is set to latest                        | low      |
 | KSOC-K8S-RUN-AS-HIGH-UID        | Container(s) not running with a high UID                       | low      |
-
-
-
-## License
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fksoclabs%2Fguard-action.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fksoclabs%2Fguard-action?ref=badge_large)
 
 ## Contributing
 
