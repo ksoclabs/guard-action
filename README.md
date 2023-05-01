@@ -1,5 +1,10 @@
 # KSOC Guard Action
 
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/ksoclabs/guard-action)
+![Hex.pm](https://img.shields.io/hexpm/l/apa)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fksoclabs%2Fguard-action.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fksoclabs%2Fguard-action?ref=badge_shield)
+[![OpenSSF Best Practices](https://bestpractices.coreinfrastructure.org/projects/7290/badge)](https://bestpractices.coreinfrastructure.org/projects/7290)
+
 KSOC finds misconfigurations in your Kubernetes posture as part of your GitHub Actions CI workflow.
 
 This action is used to execute a set of KSOC policies against the Kubernetes manifests in a given repository. There are two sources of policies that can be used:
@@ -132,3 +137,7 @@ The following policies are embedded in this action if used with the `policy_dir`
 | KSOC-K8S-HOST-PID               | Host PID flag set to true in container(s)                      | low      |
 | KSOC-K8S-IMAGE-LATEST           | Container(s) image tag is set to latest                        | low      |
 | KSOC-K8S-RUN-AS-HIGH-UID        | Container(s) not running with a high UID                       | low      |
+
+## Contributing
+
+Guard Action is Apache 2.0 licensed and accepts contributions via GitHub pull requests. See the [CONTRIBUTING](CONTRIBUTING.md) file for details.
