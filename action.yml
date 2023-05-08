@@ -49,6 +49,8 @@ inputs:
 outputs:
   results:
     description: "The results of the policy execution."
+  sarif:
+    description: "Path to a SARIF report file with the policy execution results."
 
 runs:
   using: docker
