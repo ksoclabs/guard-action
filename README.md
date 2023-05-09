@@ -17,8 +17,7 @@ This action is used to execute a set of KSOC policies against the Kubernetes man
 ```yaml
 name: ksoc-guard
 
-on:
-  pull_request:
+on: [ push ]
 
 jobs:
   ksoc-guard:
@@ -29,7 +28,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: KSOC Guard
-        uses: ksoclabs/guard-action@v0.0.8
+        uses: ksoclabs/guard-action@v0.0.9
         with:
           ksoc_account_id: <KSOC_ACCOUNT_ID>
           ksoc_access_key_id: ${{ secrets.KSOC_ACCESS_KEY_ID }}
@@ -41,8 +40,7 @@ jobs:
 ```yaml
 name: ksoc-guard
 
-on:
-  pull_request:
+on: [ push ]
 
 jobs:
   ksoc-guard:
@@ -53,7 +51,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: KSOC Guard
-        uses: ksoclabs/guard-action@v0.0.8
+        uses: ksoclabs/guard-action@v0.0.9
         with:
           policy_dir: /policies
 ```
@@ -62,7 +60,7 @@ jobs:
 
 There are numerous optional inputs that can be used to configure the action:
 - `fail_on_severity`: The severity level that will cause the action to fail. If not provided, the action will never fail.
-- `format`: The format of the output. If not provided, the default `ci-table` format will be used which is suitable for use in a CI environment.
+- `format`: The format of the output, valid options are `ci-table` and `sarif`. If not provided, the default `ci-table` will be used.
 - `ignored_paths`: A comma separated list of paths to ignore. If not provided, no paths will be ignored.
 - `ksoc_api_url`: The URL of the KSOC API. If not provided, the default `https://api.ksoc.com` will be used.
 - `paths`: A comma separated list of paths to scan. If not provided, all paths in the repository will be scanned.
@@ -71,13 +69,12 @@ There are numerous optional inputs that can be used to configure the action:
 
 ## Outputs
 
-KSOC Guard Action is storing the results of the scan in the output called `results`. This can be used to create a comment on the PR with the results of the scan. The following example shows how to do this (note that `pull-resuests` permission is required for this):
+KSOC Guard Action can store the results of the scan depending on the `format` input provided. If `format` is `ci-table` it will store outputs as multi-line string in the `results` output variable. This can be used to create a comment on the PR with the results of the scan. The following example shows how to do this (note that `pull-resuests` permission is required for this):
 
 ```yaml
 name: ksoc-guard
 
-on:
-  pull_request:
+on: [ push ]
 
 jobs:
   ksoc-guard:
@@ -89,7 +86,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: KSOC Guard
-        uses: ksoclabs/guard-action@v0.0.8
+        id: ksoc-guard
+        uses: ksoclabs/guard-action@v0.0.9
         with:
           ksoc_account_id: <KSOC_ACCOUNT_ID>
           ksoc_access_key_id: ${{ secrets.KSOC_ACCESS_KEY_ID }}
@@ -114,6 +112,39 @@ jobs:
               repo: context.repo.repo,
               body: output
             })
+```
+
+Another option is to use the `sarif` format. This will store the results of the scan as a file and the `sarif` output variable will hold a path to that file. This can be used to upload the results of the scan as a GitHub Code Scanning Alert. The following example shows how to do this (note that `security-events` permission is required for this):
+
+```yaml
+name: ksoc-guard
+
+on: [ push ]
+
+jobs:
+  ksoc-guard:
+    permissions:
+      contents: read
+      security-events: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: KSOC Guard
+        id: ksoc-guard
+        uses: ksoclabs/guard-action@v0.0.9
+        with:
+          fail_on_severity: low
+          format: sarif
+          ksoc_account_id: <KSOC_ACCOUNT_ID>
+          ksoc_access_key_id: ${{ secrets.KSOC_ACCESS_KEY_ID }}
+          ksoc_secret_key: ${{ secrets.KSOC_SECRET_KEY }}
+      - name: Upload KSOC Guard SARIF Report
+        if: success() || failure()
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: ${{ steps.ksoc-guard.outputs.sarif }}
+          checkout_path: /github/workspace
 ```
 
 ## Embedded Policies
