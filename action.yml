@@ -9,7 +9,7 @@ inputs:
   fail_on_severity:
     required: false
     description: "The severity level at which to fail the workflow. Valid values are: none, low, medium, high, critical."
-    default: high
+    default: none
   format:
     required: false
     description: "The format of the output. Valid values are: ci-table, table."
