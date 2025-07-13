@@ -1,4 +1,4 @@
-FROM us.gcr.io/ksoc-public/policy-executor:v0.0.12
+FROM us.gcr.io/ksoc-public/policy-executor:v0.0.13
 
 COPY entrypoint.sh /entrypoint.sh
 
